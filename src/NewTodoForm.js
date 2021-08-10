@@ -21,10 +21,6 @@ export default class NewTodoForm extends Component {
     this.setState({ [evt.target.name]: evt.target.value });
   }
 
-  removeTodo() {
-    // do stuff
-  }
-
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
