@@ -5,7 +5,10 @@ export default class Todo extends Component {
   render() {
     return (
       <div className="Todo">
-        <p>{this.props.item}</p>
+        <p>
+          {this.props.item}
+          <button>X</button>
+        </p>
       </div>
     );
   }
