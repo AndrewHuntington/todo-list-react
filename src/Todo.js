@@ -7,6 +7,7 @@ export default class Todo extends Component {
     this.handleRemove = this.handleRemove.bind(this);
     this.handleEdit = this.handleEdit.bind(this);
   }
+
   handleEdit(evt) {
     console.log("Editing!");
   }
@@ -17,13 +18,11 @@ export default class Todo extends Component {
 
   render() {
     return (
-      <div className="Todo" id={this.props.id}>
-        <p>
-          {this.props.item}
-          <button onClick={this.handleEdit}>Edit</button>
-          <button onClick={this.handleRemove}>X</button>
-        </p>
-      </div>
+      <li className="Todo" id={this.props.id}>
+        {this.props.task}
+        <button onClick={this.handleEdit}>Edit</button>
+        <button onClick={this.handleRemove}>X</button>
+      </li>
     );
   }
 }

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { v4 as uuidv4 } from "uuid";
 import Todo from "./Todo";
+import EditTodoForm from "./EditTodoForm";
 import NewTodoForm from "./NewTodoForm";
 import "./TodoList.css";
 
@@ -16,13 +17,13 @@ export default class TodoList extends Component {
   }
 
   addTodo(todo) {
-    const newTodo = { todo, id: uuidv4() };
+    const newTodo = { todo, id: uuidv4(), edit: false };
     this.setState((state) => ({ todos: [...state.todos, newTodo] }));
   }
 
   removeTodo(evt) {
     // first parent element is <p>, second is <div> w/id
-    const targetId = evt.target.parentElement.parentElement.id;
+    const targetId = evt.target.parentElement.id;
     const filteredTodos = [...this.state.todos].filter(
       (todo) => todo.id !== targetId
     );
@@ -30,13 +31,17 @@ export default class TodoList extends Component {
   }
 
   render() {
-    const todos = this.state.todos.map((e) => (
-      <Todo item={e.todo} key={e.id} id={e.id} removeTodo={this.removeTodo} />
-    ));
+    const todos = this.state.todos.map((e) => {
+      return e.edit ? (
+        <EditTodoForm task={e.todo} key={e.id} id={e.id} />
+      ) : (
+        <Todo task={e.todo} key={e.id} id={e.id} removeTodo={this.removeTodo} />
+      );
+    });
     return (
       <div className="TodoList">
         <h1>Todo List!</h1>
-        {todos}
+        <ul>{todos}</ul>
         <NewTodoForm addTodo={this.addTodo} />
       </div>
     );

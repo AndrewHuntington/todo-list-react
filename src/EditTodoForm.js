@@ -1,20 +1,19 @@
 import React, { Component } from "react";
-import "./NewTodoForm.css";
 
-export default class NewTodoForm extends Component {
+export default class EditTodoForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      todo: "",
+      todo: this.props.task,
     };
 
-    this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleSubmit(evt) {
     evt.preventDefault();
-    this.props.addTodo(this.state.todo);
+    console.log("You did it!");
     this.setState({ todo: "" });
   }
 
@@ -25,15 +24,13 @@ export default class NewTodoForm extends Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
-        <label htmlFor="todo">New Todo</label>
-        <br />
         <input
           name="todo"
-          id="todo"
+          id={this.props.id}
           value={this.state.todo}
           onChange={this.handleChange}
         ></input>
-        <button>Add Todo</button>
+        <button>Done</button>
       </form>
     );
   }
