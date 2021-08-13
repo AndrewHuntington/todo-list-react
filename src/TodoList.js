@@ -14,6 +14,8 @@ export default class TodoList extends Component {
 
     this.addTodo = this.addTodo.bind(this);
     this.removeTodo = this.removeTodo.bind(this);
+    this.editTodo = this.editTodo.bind(this);
+    this.submitEdit = this.submitEdit.bind(this);
   }
 
   addTodo(todo) {
@@ -22,7 +24,6 @@ export default class TodoList extends Component {
   }
 
   removeTodo(evt) {
-    // first parent element is <p>, second is <div> w/id
     const targetId = evt.target.parentElement.id;
     const filteredTodos = [...this.state.todos].filter(
       (todo) => todo.id !== targetId
@@ -30,12 +31,40 @@ export default class TodoList extends Component {
     this.setState({ todos: filteredTodos });
   }
 
+  editTodo(evt) {
+    const targetId = evt.target.parentElement.id;
+    const task = [...this.state.todos].find((todo) => todo.id === targetId);
+    task.edit = true;
+    this.setState({ todos: [...this.state.todos] });
+  }
+
+  submitEdit(evt) {
+    const target = evt.target.firstChild;
+    const targetId = target.id;
+    const targetValue = target.value;
+    const task = [...this.state.todos].find((todo) => todo.id === targetId);
+    task.edit = false;
+    task.todo = targetValue;
+    this.setState({ todos: [...this.state.todos] });
+  }
+
   render() {
     const todos = this.state.todos.map((e) => {
       return e.edit ? (
-        <EditTodoForm task={e.todo} key={e.id} id={e.id} />
+        <EditTodoForm
+          task={e.todo}
+          key={e.id}
+          id={e.id}
+          submitEdit={this.submitEdit}
+        />
       ) : (
-        <Todo task={e.todo} key={e.id} id={e.id} removeTodo={this.removeTodo} />
+        <Todo
+          task={e.todo}
+          key={e.id}
+          id={e.id}
+          editTodo={this.editTodo}
+          removeTodo={this.removeTodo}
+        />
       );
     });
     return (

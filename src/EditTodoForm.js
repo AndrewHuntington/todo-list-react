@@ -13,7 +13,7 @@ export default class EditTodoForm extends Component {
 
   handleSubmit(evt) {
     evt.preventDefault();
-    console.log("You did it!");
+    this.props.submitEdit(evt);
     this.setState({ todo: "" });
   }
 

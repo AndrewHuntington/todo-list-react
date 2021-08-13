@@ -9,7 +9,7 @@ export default class Todo extends Component {
   }
 
   handleEdit(evt) {
-    console.log("Editing!");
+    this.props.editTodo(evt);
   }
 
   handleRemove(evt) {
