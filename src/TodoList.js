@@ -8,9 +8,15 @@ import "./TodoList.css";
 export default class TodoList extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      todos: [],
-    };
+    if (localStorage.tasks) {
+      this.state = {
+        todos: JSON.parse(localStorage.tasks),
+      };
+    } else {
+      this.state = {
+        todos: [],
+      };
+    }
 
     this.addTodo = this.addTodo.bind(this);
     this.removeTodo = this.removeTodo.bind(this);
@@ -19,20 +25,33 @@ export default class TodoList extends Component {
     this.markComplete = this.markComplete.bind(this);
   }
 
-  markComplete(todo) {
+  /**
+   * According to one of my extensions, the await keyword shouldn't be doing
+   * anything, but the following code doesn't work without the async/await
+   * keywords.
+   */
+
+  async markComplete(todo) {
     todo.classList.toggle("strikethrough");
+    const targetId = todo.id;
+    const task = [...this.state.todos].find((todo) => todo.id === targetId);
+    task.completed = !task.completed;
+    await this.setState({ todos: [...this.state.todos] });
+    localStorage.setItem("tasks", JSON.stringify(this.state.todos));
   }
 
-  addTodo(todo) {
-    const newTodo = { todo, id: uuidv4(), edit: false };
-    this.setState((state) => ({ todos: [...state.todos, newTodo] }));
+  async addTodo(todo) {
+    const newTodo = { todo, id: uuidv4(), edit: false, completed: false };
+    await this.setState((state) => ({ todos: [...state.todos, newTodo] }));
+    localStorage.setItem("tasks", JSON.stringify(this.state.todos));
   }
 
-  removeTodo(targetId) {
+  async removeTodo(targetId) {
     const filteredTodos = [...this.state.todos].filter(
       (todo) => todo.id !== targetId
     );
-    this.setState({ todos: filteredTodos });
+    await this.setState({ todos: filteredTodos });
+    localStorage.setItem("tasks", JSON.stringify(this.state.todos));
   }
 
   editTodo(targetId) {
@@ -41,13 +60,14 @@ export default class TodoList extends Component {
     this.setState({ todos: [...this.state.todos] });
   }
 
-  submitEdit(target) {
+  async submitEdit(target) {
     const targetId = target.id;
     const targetValue = target.value;
     const task = [...this.state.todos].find((todo) => todo.id === targetId);
     task.edit = false;
     task.todo = targetValue;
-    this.setState({ todos: [...this.state.todos] });
+    await this.setState({ todos: [...this.state.todos] });
+    localStorage.setItem("tasks", JSON.stringify(this.state.todos));
   }
 
   render() {
@@ -64,12 +84,14 @@ export default class TodoList extends Component {
           task={e.todo}
           key={e.id}
           id={e.id}
+          completed={e.completed}
           editTodo={this.editTodo}
           removeTodo={this.removeTodo}
           markComplete={this.markComplete}
         />
       );
     });
+
     return (
       <div className="TodoList">
         <h1>Todo List!</h1>

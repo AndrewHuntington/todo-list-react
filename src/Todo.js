@@ -26,7 +26,10 @@ export default class Todo extends Component {
 
   render() {
     return (
-      <li className="Todo" id={this.props.id}>
+      <li
+        className={`Todo ${this.props.completed && "strikethrough"}`}
+        id={this.props.id}
+      >
         <span onClick={this.handleMark}>{this.props.task}</span>
         <button onClick={this.handleEdit}>Edit</button>
         <button onClick={this.handleRemove}>X</button>
