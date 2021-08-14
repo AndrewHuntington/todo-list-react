@@ -16,6 +16,11 @@ export default class TodoList extends Component {
     this.removeTodo = this.removeTodo.bind(this);
     this.editTodo = this.editTodo.bind(this);
     this.submitEdit = this.submitEdit.bind(this);
+    this.markComplete = this.markComplete.bind(this);
+  }
+
+  markComplete(todo) {
+    todo.classList.toggle("strikethrough");
   }
 
   addTodo(todo) {
@@ -23,23 +28,20 @@ export default class TodoList extends Component {
     this.setState((state) => ({ todos: [...state.todos, newTodo] }));
   }
 
-  removeTodo(evt) {
-    const targetId = evt.target.parentElement.id;
+  removeTodo(targetId) {
     const filteredTodos = [...this.state.todos].filter(
       (todo) => todo.id !== targetId
     );
     this.setState({ todos: filteredTodos });
   }
 
-  editTodo(evt) {
-    const targetId = evt.target.parentElement.id;
+  editTodo(targetId) {
     const task = [...this.state.todos].find((todo) => todo.id === targetId);
     task.edit = true;
     this.setState({ todos: [...this.state.todos] });
   }
 
-  submitEdit(evt) {
-    const target = evt.target.firstChild;
+  submitEdit(target) {
     const targetId = target.id;
     const targetValue = target.value;
     const task = [...this.state.todos].find((todo) => todo.id === targetId);
@@ -64,6 +66,7 @@ export default class TodoList extends Component {
           id={e.id}
           editTodo={this.editTodo}
           removeTodo={this.removeTodo}
+          markComplete={this.markComplete}
         />
       );
     });

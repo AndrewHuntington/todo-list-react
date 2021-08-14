@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "./EditTodoForm.css";
 
 export default class EditTodoForm extends Component {
   constructor(props) {
@@ -13,7 +14,8 @@ export default class EditTodoForm extends Component {
 
   handleSubmit(evt) {
     evt.preventDefault();
-    this.props.submitEdit(evt);
+    const target = evt.target.firstChild;
+    this.props.submitEdit(target);
     this.setState({ todo: "" });
   }
 
@@ -23,7 +25,7 @@ export default class EditTodoForm extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form className="EditTodoForm" onSubmit={this.handleSubmit}>
         <input
           name="todo"
           id={this.props.id}

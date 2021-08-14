@@ -24,7 +24,7 @@ export default class NewTodoForm extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form className="NewTodoForm" onSubmit={this.handleSubmit}>
         <label htmlFor="todo">New Todo</label>
         <br />
         <input

@@ -1,2 +1,7 @@
-.Todo {
+.Todo > button:first-of-type {
+  margin-left: 10px;
+}
+
+.strikethrough {
+  text-decoration: line-through;
 }
