@@ -25,48 +25,40 @@ export default class TodoList extends Component {
     this.markComplete = this.markComplete.bind(this);
   }
 
-  /**
-   * According to one of my extensions, the await keyword shouldn't be doing
-   * anything, but the following code doesn't work without the async/await
-   * keywords.
-   */
-
-  async markComplete(todo) {
+  markComplete(todo) {
     todo.classList.toggle("strikethrough");
     const targetId = todo.id;
     const task = [...this.state.todos].find((todo) => todo.id === targetId);
     task.completed = !task.completed;
-    await this.setState({ todos: [...this.state.todos] });
+    this.setState((state) => ({ todos: [...state.todos] }));
     localStorage.setItem("tasks", JSON.stringify(this.state.todos));
   }
 
-  async addTodo(todo) {
+  addTodo(todo) {
     const newTodo = { todo, id: uuidv4(), edit: false, completed: false };
-    await this.setState((state) => ({ todos: [...state.todos, newTodo] }));
+    this.setState((state) => ({ todos: [...state.todos, newTodo] }));
     localStorage.setItem("tasks", JSON.stringify(this.state.todos));
   }
 
-  async removeTodo(targetId) {
-    const filteredTodos = [...this.state.todos].filter(
-      (todo) => todo.id !== targetId
-    );
-    await this.setState({ todos: filteredTodos });
-    localStorage.setItem("tasks", JSON.stringify(this.state.todos));
+  removeTodo(id) {
+    const filteredTodos = this.state.todos.filter((todo) => todo.id !== id);
+    this.setState({ todos: filteredTodos });
+    localStorage.setItem("tasks", JSON.stringify(filteredTodos));
   }
 
-  editTodo(targetId) {
-    const task = [...this.state.todos].find((todo) => todo.id === targetId);
+  editTodo(id) {
+    const task = [...this.state.todos].find((todo) => todo.id === id);
     task.edit = true;
-    this.setState({ todos: [...this.state.todos] });
+    this.setState((state) => ({ todos: [...state.todos] }));
   }
 
-  async submitEdit(target) {
+  submitEdit(target) {
     const targetId = target.id;
     const targetValue = target.value;
     const task = [...this.state.todos].find((todo) => todo.id === targetId);
     task.edit = false;
     task.todo = targetValue;
-    await this.setState({ todos: [...this.state.todos] });
+    this.setState((state) => ({ todos: [...this.state.todos] }));
     localStorage.setItem("tasks", JSON.stringify(this.state.todos));
   }
 

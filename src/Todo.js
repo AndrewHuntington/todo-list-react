@@ -14,14 +14,12 @@ export default class Todo extends Component {
     this.props.markComplete(todo);
   }
 
-  handleEdit(evt) {
-    const targetId = evt.target.parentElement.id;
-    this.props.editTodo(targetId);
+  handleEdit() {
+    this.props.editTodo(this.props.id);
   }
 
-  handleRemove(evt) {
-    const targetId = evt.target.parentElement.id;
-    this.props.removeTodo(targetId);
+  handleRemove() {
+    this.props.removeTodo(this.props.id);
   }
 
   render() {
