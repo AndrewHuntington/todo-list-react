@@ -25,10 +25,8 @@ export default class TodoList extends Component {
     this.markComplete = this.markComplete.bind(this);
   }
 
-  markComplete(todo) {
-    todo.classList.toggle("strikethrough");
-    const targetId = todo.id;
-    const task = [...this.state.todos].find((todo) => todo.id === targetId);
+  markComplete(id) {
+    const task = [...this.state.todos].find((todo) => todo.id === id);
     task.completed = !task.completed;
     this.setState((state) => ({ todos: [...state.todos] }));
     localStorage.setItem("tasks", JSON.stringify(this.state.todos));

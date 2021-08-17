@@ -9,9 +9,8 @@ export default class Todo extends Component {
     this.handleEdit = this.handleEdit.bind(this);
   }
 
-  handleMark(evt) {
-    const todo = evt.target.parentElement;
-    this.props.markComplete(todo);
+  handleMark() {
+    this.props.markComplete(this.props.id);
   }
 
   handleEdit() {
