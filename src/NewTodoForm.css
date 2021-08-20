@@ -1,3 +1,4 @@
-.NewTodoForm > button {
-  margin-left: 10px;
+.NewTodoForm .label {
+  position: relative;
+  transition: opacity 0.2s linear;
 }

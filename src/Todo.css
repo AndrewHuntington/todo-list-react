@@ -1,7 +1,36 @@
-.Todo > button:first-of-type {
-  margin-left: 10px;
+.Todo .actions {
+  flex-shrink: 0;
+  padding-left: 0.7em;
 }
 
-.strikethrough {
-  text-decoration: line-through;
+span {
+  position: relative;
+  transition: opacity 0.2s linear;
+}
+
+.done span {
+  opacity: 0.6;
+}
+
+.done span:before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -0.5rem;
+  display: block;
+  width: 0%;
+  height: 1px;
+  background: #fff;
+  animation: strikeitem 0.3s ease-out 0s forwards;
+}
+
+@keyframes strikeitem {
+  to {
+    width: calc(100% + 1rem);
+  }
+}
+
+.fas {
+  cursor: pointer;
+  color: var(--primary-text);
 }

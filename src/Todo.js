@@ -24,12 +24,14 @@ export default class Todo extends Component {
   render() {
     return (
       <li
-        className={`Todo ${this.props.completed && "strikethrough"}`}
+        className={`Todo ${this.props.completed && "done"}`}
         id={this.props.id}
       >
         <span onClick={this.handleMark}>{this.props.task}</span>
-        <button onClick={this.handleEdit}>Edit</button>
-        <button onClick={this.handleRemove}>X</button>
+        <div className="actions">
+          <i className="fas fa-edit" onClick={this.handleEdit}></i>
+          <i className="fas fa-trash-alt" onClick={this.handleRemove}></i>
+        </div>
       </li>
     );
   }
