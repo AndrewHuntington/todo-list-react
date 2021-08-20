@@ -1,9 +1,9 @@
 :root {
   --bg-color: #f7f1f1;
-  --primary-color: #ff6666;
-  --item-bg-color: rgba(255, 255, 255, 0.1);
+  --primary-color: #1cca3f;
+  --buton-hover-clr: #169d31;
+  --task-bg-color: rgba(255, 255, 255, 0.3);
   --primary-text: #fff;
-  /* --secondary-text: */
 }
 
 * {

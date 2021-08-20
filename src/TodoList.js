@@ -32,9 +32,11 @@ export default class TodoList extends Component {
     localStorage.setItem("tasks", JSON.stringify(this.state.todos));
   }
 
-  addTodo(todo) {
+  // Doesn't work w/o async/await ...don't know why it works either...
+  async addTodo(todo) {
     const newTodo = { todo, id: uuidv4(), edit: false, completed: false };
-    this.setState((state) => ({ todos: [...state.todos, newTodo] }));
+    await this.setState({ todos: [...this.state.todos, newTodo] });
+    console.log(this.state.todos);
     localStorage.setItem("tasks", JSON.stringify(this.state.todos));
   }
 

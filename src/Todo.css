@@ -1,18 +1,27 @@
-.Todo .actions {
+.Todo {
+  display: flex;
+  margin: 0 -3rem 4px;
+  padding: 1.1rem 3rem;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--task-bg-color);
+}
+
+.Todo > .actions {
   flex-shrink: 0;
   padding-left: 0.7em;
 }
 
-span {
+.Todo span {
   position: relative;
   transition: opacity 0.2s linear;
 }
 
-.done span {
+.Todo.done span {
   opacity: 0.6;
 }
 
-.done span:before {
+.Todo.done span:before {
   content: "";
   position: absolute;
   top: 50%;
@@ -33,4 +42,8 @@ span {
 .fas {
   cursor: pointer;
   color: var(--primary-text);
+}
+
+.fa-trash-alt {
+  padding-left: 0.5em;
 }
