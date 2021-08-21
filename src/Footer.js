@@ -9,7 +9,7 @@ export default class Footer extends Component {
           <p>
             View the repo on{" "}
             <a
-              href="https://github.com/"
+              href="https://github.com/AndrewHuntington/todo-list-react"
               target="_blank"
               rel="noopener noreferrer"
             >
