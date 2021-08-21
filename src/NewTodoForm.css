@@ -32,7 +32,7 @@
 }
 
 .NewTodoForm button:hover {
-  background: var(--buton-hover-clr);
+  background: var(--button-hover-clr);
 }
 
 .NewTodoForm input,
