@@ -12,15 +12,25 @@
   --primary-text: #fff;
 }
 
-* {
+*,
+*:before,
+*:after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+#root {
+  overflow: hidden;
+  padding-bottom: 3rem;
+  min-height: 100%;
+  position: relative;
+}
+
 html {
   background: var(--bg-color-backup);
   background: var(--bg-color-gradient);
+  height: 100vh;
 }
 
 html,

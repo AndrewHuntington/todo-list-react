@@ -36,7 +36,6 @@ export default class TodoList extends Component {
   async addTodo(todo) {
     const newTodo = { todo, id: uuidv4(), edit: false, completed: false };
     await this.setState({ todos: [...this.state.todos, newTodo] });
-    console.log(this.state.todos);
     localStorage.setItem("tasks", JSON.stringify(this.state.todos));
   }
 

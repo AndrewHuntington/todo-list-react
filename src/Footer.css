@@ -1,0 +1,27 @@
+.Footer {
+  display: block;
+  padding: 20px;
+  height: 3rem;
+  width: 100%;
+}
+
+.Footer-content {
+  background-color: var(--bg-color-backup);
+  color: var(--primary-text);
+  text-align: center;
+  padding: 20px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 3rem;
+  width: 100%;
+}
+
+.Footer-content a {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+.Footer-content a:visited {
+  color: var(--button-hover-clr);
+}
