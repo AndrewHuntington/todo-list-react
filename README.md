@@ -30,6 +30,6 @@ One of the main challenges I faced while creating this app was getting the brows
 
 # Additional Acknowledgements
 
-This project was bootstrapped with `react-create-app` and its styles are based [Sawsan's Todo List UI with VueJs](https://codepen.io/saawsan/pen/jayzeq) (with further tweeks made by me.) All other code is my own.
+This project was bootstrapped with `react-create-app` and its styles are based [Sawsan's Todo List UI with VueJs](https://codepen.io/saawsan/pen/jayzeq) (with further tweaks made by me.) All other code is my own.
 
 Copywrite 2021, Andrew Huntington.
