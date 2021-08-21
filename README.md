@@ -2,6 +2,8 @@
 
 A simple todo list app built with React, JavaScript, and CSS.
 
+### [Try it live](https://andrewhuntington.github.io/todo-list-react/)
+
 # Project Screen Shot
 
 ![Screenshot of Todo App](/other/ASTLR_Screenshot.png "Todo App")
