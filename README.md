@@ -32,6 +32,8 @@ One of the main challenges I faced while creating this app was getting the brows
 
 # Additional Acknowledgements
 
+This readme is based on a template called the [Peronsal project README template](https://gist.github.com/martensonbj/6bf2ec2ed55f5be723415ea73c4557c4) by GitHub user [martensonbj](https://gist.github.com/martensonbj).
+
 This project was bootstrapped with `react-create-app` and its styles are based [Sawsan's Todo List UI with VueJs](https://codepen.io/saawsan/pen/jayzeq) (with further tweaks made by me.) All other code is my own.
 
-Copywrite 2021, Andrew Huntington.
+Copyright 2021, Andrew Huntington.
